@@ -7,14 +7,15 @@
 @section('content')
     <div class="row">
         <div class="col-12 col-md-12">
-            <form>
+            <form action="{{ route('admin.add.step') }}" method="POST">
+                @csrf
                 <div class="form-group">
                     <label for="exampleInputEmail1">نام مرحله</label>
-                    <input type="text" class="form-control" placeholder="نام مرحله" >
+                    <input type="text" class="form-control" name="step-name" placeholder="نام مرحله" >
                 </div>
                 <div class="form-group">
                     <label>شماره مرحله</label>
-                    <input type="number" class="form-control"  >
+                    <input type="number" name="step-number" class="form-control"  >
                 </div>
                 <button type="submit" class="btn btn-primary">ثبت</button>
             </form>
@@ -38,13 +39,15 @@
                         <tbody>
                             @php $counter = 0 ; @endphp
                             @foreach($steps as $step)
-                                <td>{{ ++$counter }}</td>
-                                <td>{{ $step->step_name }}</td>
-                                <td>{{ $step->step_number }}</td>
-                                <td>
-                                    <button class="btn btn-primary">ویرایش</button>
-                                    <button class="btn btn-danger">حذف</button>
-                                </td>
+                                <tr>
+                                    <td>{{ ++$counter }}</td>
+                                    <td>{{ $step->step_name }}</td>
+                                    <td>{{ $step->step_number }}</td>
+                                    <td>
+                                        <button class="btn btn-primary" data-url="" data-id="{{ $step->step_id }}">ویرایش</button>
+                                        <button class="btn btn-danger step-btn-delete" data-url="{{ route('admin.remove.step') }}" data-id="{{ $step->step_id }}">حذف</button>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -57,6 +60,7 @@
 @section('js')
     <script src="{{ asset('assets/adminlte') }}/plugins/datatables/jquery.dataTables.js"></script>
     <script src="{{ asset('assets/adminlte') }}/plugins/datatables/dataTables.bootstrap4.js"></script>
+    <script src="{{ asset('assets/step/step.js') }}"></script>
     <script>
         $(function(){
             $('#example2').DataTable({

@@ -10,4 +10,6 @@ class Step extends Model
     use HasFactory;
     protected $table = 'steps';
     protected $primaryKey = 'step_id';
+    public $timestamps = false;
+
 }

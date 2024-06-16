@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('steps', function (Blueprint $table) {
             $table->id('step_id');
             $table->string('step_name');
-            $table->integer('step_number')->unique();
+            $table->integer('step_number');
 
         });
     }

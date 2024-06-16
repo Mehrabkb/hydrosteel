@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>@yield('title')</title>
   <!-- Tell the browser to be responsive to screen width -->
@@ -21,6 +22,7 @@
   <!-- Date Picker -->
   <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/datepicker/datepicker3.css">
   <!-- Daterange picker -->
+  <link rel="stylesheet" href= {{ asset('assets/adminlte/plugins/font-awesome/css/font-awesome.css') }}>
   <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/daterangepicker/daterangepicker-bs3.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
@@ -30,24 +32,26 @@
   <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/dist/css/bootstrap-rtl.min.css">
   <!-- template rtl version -->
   <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/dist/css/custom-style.css">
+  <link rel="stylesheet" href="{{ asset('assets/alertifyjs/css/themes/bootstrap.rtl.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/alertifyjs/css/alertify.min.css') }}">
     @yield('css')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+  <nav class="main-header navbar navbar-expand bg-dark navbar-dark border-bottom">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">خانه</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">تماس</a>
-      </li>
+{{--      <li class="nav-item d-none d-sm-inline-block">--}}
+{{--        <a href="index3.html" class="nav-link">خانه</a>--}}
+{{--      </li>--}}
+{{--      <li class="nav-item d-none d-sm-inline-block">--}}
+{{--        <a href="#" class="nav-link">تماس</a>--}}
+{{--      </li>--}}
     </ul>
 
     <!-- SEARCH FORM -->
@@ -578,6 +582,25 @@
 <script src="{{ asset('assets/adminlte') }}/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/adminlte') }}/dist/js/demo.js"></script>
+<script src="{{ asset('assets/alertifyjs/alertify.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if($errors->any())
+    <script>
+        alertify.error('{{ $errors->first() }}');
+    </script>
+@endif
+@if(session('success'))
+    <script>
+        alertify.success('{{ session('success') }}');
+    </script>
+@endif
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 @yield('js')
 </body>
 </html>

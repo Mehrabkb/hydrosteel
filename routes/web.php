@@ -22,4 +22,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/factor' , [\App\Http\Controllers\AdminController::class , 'factor'])->name('admin.factor');
     Route::get('/product' ,[\App\Http\Controllers\AdminController::class , 'product'])->name('admin.product');
     Route::get('/step' , [\App\Http\Controllers\AdminController::class , 'step'])->name('admin.step');
+    Route::post('/step/add' , [\App\Http\Controllers\AdminController::class , 'addStep'])->name('admin.add.step');
+    Route::post('/step/remove' , [\App\Http\Controllers\AdminController::class , 'removeStep'])->name('admin.remove.step');
 });
