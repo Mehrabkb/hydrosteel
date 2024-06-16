@@ -18,5 +18,8 @@ Route::get('/', function () {
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('/home', [\App\Http\Controllers\AdminController::class , 'home']);
+    Route::get('/home', [\App\Http\Controllers\AdminController::class , 'home'])->name('admin.home');
+    Route::get('/factor' , [\App\Http\Controllers\AdminController::class , 'factor'])->name('admin.factor');
+    Route::get('/product' ,[\App\Http\Controllers\AdminController::class , 'product'])->name('admin.product');
+    Route::get('/step' , [\App\Http\Controllers\AdminController::class , 'step'])->name('admin.step');
 });
