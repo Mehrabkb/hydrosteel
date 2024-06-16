@@ -34,4 +34,22 @@ $(function(){
             }
         });
     })
+    $(document).on('click' , '.step-btn-edit' , function(){
+        let that = $(this);
+        let step_id = that.attr('data-id');
+        let url = that.attr('data-url');
+        $.ajax({
+            method : 'POST',
+            url : url,
+            data : {
+                'step_id' : step_id
+            },
+            success : function(result){
+                let editForm = $('.edit-step-form-container form');
+                editForm.find('input[name="step-id"]').val(result.step_id);
+                editForm.find('input[name="step-name"]').val(result.step_name);
+                editForm.find('input[name="step-number"]').val(result.step_number);
+            }
+        })
+    })
 })

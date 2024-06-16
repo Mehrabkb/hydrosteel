@@ -8,9 +8,9 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/ plugins/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+{{--  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">--}}
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/dist/css/adminlte.min.css">
   <!-- iCheck -->
@@ -545,6 +545,8 @@
 </div>
 <!-- ./wrapper -->
 
+
+
 <!-- jQuery -->
 <script src="{{ asset('assets/adminlte') }}/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -582,6 +584,8 @@
 <script src="{{ asset('assets/adminlte') }}/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/adminlte') }}/dist/js/demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 <script src="{{ asset('assets/alertifyjs/alertify.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @if($errors->any())
@@ -600,7 +604,17 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    $(function(){
+        if(window.innerWidth < 998){
+            let body = $('body');
+            if(body.hasClass('sidebar-open')){
+                body.removeClass('sidebar-open');
+                body.addClass('sidebar-collapse');
+            }
+        }
+    })
 </script>
 @yield('js')
+@yield('modals')
 </body>
 </html>

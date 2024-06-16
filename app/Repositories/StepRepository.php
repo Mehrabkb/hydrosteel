@@ -31,4 +31,9 @@ class StepRepository implements StepRepositoryInterface{
         }
         return false;
     }
+    public function getStep($step_id)
+    {
+        // TODO: Implement getStep() method.
+        return Step::where('step_id' , $step_id)->first();
+    }
 }

@@ -44,7 +44,7 @@
                                     <td>{{ $step->step_name }}</td>
                                     <td>{{ $step->step_number }}</td>
                                     <td>
-                                        <button class="btn btn-primary" data-url="" data-id="{{ $step->step_id }}">ویرایش</button>
+                                        <button class="btn btn-primary step-btn-edit" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" data-url="{{ route('admin.single.step') }}" data-id="{{ $step->step_id }}">ویرایش</button>
                                         <button class="btn btn-danger step-btn-delete" data-url="{{ route('admin.remove.step') }}" data-id="{{ $step->step_id }}">حذف</button>
                                     </td>
                                 </tr>
@@ -56,6 +56,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 @section('js')
     <script src="{{ asset('assets/adminlte') }}/plugins/datatables/jquery.dataTables.js"></script>
@@ -80,4 +81,33 @@
         })
 
     </script>
+@endsection
+@section('modals')
+    <div class="modal fade edit-step-form-container" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">ویرایش مرحله</h1>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('admin.add.step') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="step-id">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">نام مرحله</label>
+                            <input type="text" class="form-control" name="step-name" placeholder="نام مرحله" >
+                        </div>
+                        <div class="form-group">
+                            <label>شماره مرحله</label>
+                            <input type="number" name="step-number" class="form-control"  >
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">انصراف</button>
+                            <button type="submit" class="btn btn-primary">ثبت</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

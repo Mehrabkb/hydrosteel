@@ -73,4 +73,21 @@ class AdminController extends Controller
             }
         }
     }
+    public function singleStep(Request $request){
+        if($request->isMethod('POST')){
+            $validate = $request->validate([
+                'step_id' => 'required'
+            ],[
+                'step_id.required' => 'مقدار الزامی است'
+            ]);
+            if($validate){
+                $step_id = htmlspecialchars($request->input('step_id'));
+                $step = $this->stepRepository->getStep($step_id);
+                if($step){
+                    return $step;
+                }
+                return false;
+            }
+        }
+    }
 }
