@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('step_id');
             $table->string('step_name');
             $table->integer('step_number')->unique();
-            
+
         });
     }
 
