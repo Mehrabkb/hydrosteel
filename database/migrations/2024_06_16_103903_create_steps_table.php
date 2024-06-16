@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id('user_id');
-            $table->string('name');
-            $table->string('last_name');
-            $table->string('email');
-            $table->string('password' , 250);
-            $table->string('mobile' , 12);
+        Schema::create('steps', function (Blueprint $table) {
+            $table->id('step_id');
+            $table->string('step_name');
+            $table->integer('step_number')->unique();
+            
         });
     }
 
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('steps');
     }
 };
