@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/dist/css/bootstrap-rtl.min.css">
   <!-- template rtl version -->
   <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/dist/css/custom-style.css">
-
+    @yield('css')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -578,5 +578,6 @@
 <script src="{{ asset('assets/adminlte') }}/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/adminlte') }}/dist/js/demo.js"></script>
+@yield('js')
 </body>
 </html>

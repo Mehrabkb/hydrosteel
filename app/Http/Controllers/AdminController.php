@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\StepRepository;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function __construct(StepRepository $stepRepository){
+        $this->stepRepository = $stepRepository;
+    }
     public function home(Request $request){
         return view('admin.home');
     }
@@ -26,7 +30,8 @@ class AdminController extends Controller
     public function step(Request $request){
         switch ($request->method()){
             case 'GET':
-                return view('admin.step');
+                $steps = $this->stepRepository->getAll();
+                return view('admin.step' , compact('steps'));
             break;
         }
     }
