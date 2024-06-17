@@ -16,7 +16,8 @@ class AdminController extends Controller
     public function factor(Request $request){
         switch ($request->method()){
             case 'GET':
-                return view('admin.factor');
+                $steps = $this->stepRepository->getAll();
+                return view('admin.factor' , compact('steps'));
             break;
         }
     }

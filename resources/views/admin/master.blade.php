@@ -34,6 +34,7 @@
   <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/dist/css/custom-style.css">
   <link rel="stylesheet" href="{{ asset('assets/alertifyjs/css/themes/bootstrap.rtl.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/alertifyjs/css/alertify.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/persianDatePicker/persian-datepicker.min.css') }}">
     @yield('css')
 </head>
 <body class="hold-transition sidebar-mini">
@@ -586,6 +587,8 @@
 <script src="{{ asset('assets/adminlte') }}/dist/js/demo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+<script src="{{ asset('assets/persianDatePicker/persian-date.min.js') }}"></script>
+<script src="{{ asset('assets/persianDatePicker/persian-datepicker.min.js') }}"></script>
 <script src="{{ asset('assets/alertifyjs/alertify.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @if($errors->any())
