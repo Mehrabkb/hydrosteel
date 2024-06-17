@@ -36,4 +36,15 @@ class StepRepository implements StepRepositoryInterface{
         // TODO: Implement getStep() method.
         return Step::where('step_id' , $step_id)->first();
     }
+    public function updateStep($step_id, $step_name, $step_number){
+        $step = $this->getStep($step_id);
+        if($step){
+            $step->step_name = $step_name;
+            $step->step_number = $step_number;
+            if($step->save()){
+                return true;
+            }
+        }
+        return false;
+    }
 }

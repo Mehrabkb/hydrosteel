@@ -90,7 +90,7 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">ویرایش مرحله</h1>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admin.add.step') }}" method="POST">
+                    <form action="{{ route('admin.edit.step') }}" method="POST">
                         @csrf
                         <input type="hidden" name="step-id">
                         <div class="form-group">

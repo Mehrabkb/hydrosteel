@@ -25,4 +25,5 @@ Route::prefix('admin')->group(function () {
     Route::post('/step/add' , [\App\Http\Controllers\AdminController::class , 'addStep'])->name('admin.add.step');
     Route::post('/step/remove' , [\App\Http\Controllers\AdminController::class , 'removeStep'])->name('admin.remove.step');
     Route::post('/step/single' , [\App\Http\Controllers\AdminController::class , 'singleStep'])->name('admin.single.step');
+    Route::post('/step/edit' , [\App\Http\Controllers\AdminController::class , 'editStep'])->name('admin.edit.step');
 });

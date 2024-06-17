@@ -90,4 +90,26 @@ class AdminController extends Controller
             }
         }
     }
+    public function editStep(Request $request){
+        if($request->isMethod('POST')){
+            $validate = $request->validate([
+                'step-id' => 'required',
+                'step-name' => 'required',
+                'step-number' => 'required'
+            ],[
+                'step-id.required' => 'آیدی مرحله الزامی است',
+                'step-name.required' => 'نام مرحله الزامی است',
+                'step-number.required' => 'شماره مرحله الزامی است'
+            ]);
+            if($validate){
+                $step_id = htmlspecialchars($request->input('step-id'));
+                $step_name = htmlspecialchars($request->input('step-name'));
+                $step_number = htmlspecialchars($request->input('step-number'));
+                if($this->stepRepository->updateStep($step_id , $step_name , $step_number)){
+                    return redirect()->back()->with(['success' , 'با موفقیت ویرایش شد']);
+                }
+                return redirect()->back()->withErrors('مشکلی رخ داده است');
+            }
+        }
+    }
 }
