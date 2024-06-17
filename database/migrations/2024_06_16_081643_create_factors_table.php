@@ -16,6 +16,7 @@ return new class extends Migration
             $table->bigInteger('factor_number')->nullable();
             $table->string('register-date')->nullable();
             $table->string('exp-date')->nullable();
+            $table->unsignedBigInteger('user_id');
         });
     }
 

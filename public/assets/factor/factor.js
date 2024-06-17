@@ -4,6 +4,11 @@ $(function(){
         format : 'YYYY/M/D',
         autoClose: true
     });
+    $('.product-date').persianDatepicker({
+        initialValue: false,
+        format : 'YYYY/M/D',
+        autoClose: true
+    });
     function printStepsOptions(){
         let output = ``;
         for(let i = 0 ; i < steps.length ; i++){
@@ -22,7 +27,7 @@ $(function(){
                         </div>
                         <div class="col-12 col-md-4">
                             <label>نام محصول</label>
-                            <input type="text" class="form-control" name="product-title[]" placeholder="نام محصول">
+                            <input type="text" class="form-control" name="product-title[]" placeholder="نام محصول" autocomplete="off">
                         </div>
                         <div class="col-12 col-md-4">
                             <label>مرحله</label>
@@ -32,11 +37,11 @@ $(function(){
                         </div>
                         <div class="col-12 col-md-4">
                             <label>تاریخ تقریبی تحویل</label>
-                            <input type="text" class="form-control" placeholder="تاریخ تقریبی محصول" name="product-date[]">
+                            <input type="text" class="form-control product-date" placeholder="تاریخ تقریبی محصول" name="product-date[]" autocomplete="off" ">
                         </div>
                         <div class="col-12 col-md-12 mt-3">
                             <label>توضیحات</label>
-                            <textarea class="form-control" name="product-description[]"></textarea>
+                            <textarea class="form-control" name="product-description[]" autocomplete="off"></textarea>
                         </div>
                     </div>`);
     })
