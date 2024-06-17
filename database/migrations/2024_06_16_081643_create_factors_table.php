@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('factors', function (Blueprint $table) {
             $table->id('factor_id');
             $table->bigInteger('factor_number')->nullable();
-            $table->string('register-date')->nullable();
-            $table->string('exp-date')->nullable();
+            $table->string('register_date')->nullable();
+            $table->string('exp_date')->nullable();
             $table->unsignedBigInteger('user_id');
         });
     }

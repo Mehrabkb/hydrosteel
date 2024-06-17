@@ -44,6 +44,11 @@ $(function(){
                             <textarea class="form-control" name="product-description[]" autocomplete="off"></textarea>
                         </div>
                     </div>`);
+        $('.product-date').persianDatepicker({
+            initialValue: false,
+            format : 'YYYY/M/D',
+            autoClose: true
+        });
     })
     $(document).on('click' , '.btn-delete-item' , function(){
         let that = $(this);

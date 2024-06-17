@@ -27,8 +27,11 @@
                         @foreach($factors as $factor)
                             <tr>
                                 <td>{{ ++$counter }}</td>
-                                <td>{{ $factor->name . ' ' . $factor->last_name }}</td>
+                                <td>{{ $factor->full_name}}</td>
                                 <td>{{ $factor->factor_number }}</td>
+                                <td>
+                                    <a class="btn btn-primary text-white">مشاهده</a>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

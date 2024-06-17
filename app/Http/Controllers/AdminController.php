@@ -3,14 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\FactorRepository;
+use App\Repositories\ProductRepository;
 use App\Repositories\StepRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function __construct(StepRepository $stepRepository , FactorRepository $factorRepository){
+    public function __construct(StepRepository $stepRepository
+        , FactorRepository $factorRepository , UserRepository $userRepository
+        , ProductRepository $productRepository){
         $this->stepRepository = $stepRepository;
         $this->factorRepository = $factorRepository;
+        $this->userRepository = $userRepository;
+        $this->productRepository = $productRepository;
     }
     public function home(Request $request){
         return view('admin.home');
@@ -49,7 +55,41 @@ class AdminController extends Controller
                 'product-description.required' => 'توضیحات محصول الزامی است'
             ]);
             if($validated){
-                dd($request->all());
+                $username = htmlspecialchars($request->input('user-name'));
+                $usermobile = htmlspecialchars($request->input('user-mobile'));
+                $factornumber = htmlspecialchars($request->input('factor-number'));
+                $productstepids = $request->input('product-step-id');
+                $producttitles = $request->input('product-title');
+                $expdate = htmlspecialchars($request->input('exp-date'));
+                $productdates = $request->input('product-date');
+                $productdescriptions = $request->input('product-description');
+                $user_id = $this->userRepository->addUser($username , $usermobile);
+                for($i = 0 ; $i < count($productstepids) ; $i++){
+                    $productstepids[$i] = htmlspecialchars($productstepids[$i]);
+                    $producttitles[$i] = htmlspecialchars($producttitles[$i]);
+                    $productdates[$i] = htmlspecialchars($productdates[$i]);
+                    $productdescriptions[$i] = htmlspecialchars($productdescriptions[$i]);
+                }
+                if($user_id){
+                    $factor_id = $this->factorRepository->addFactor($factornumber , $expdate , $user_id);
+                    if($factor_id){
+                        for($i = 0 ; $i < count($productstepids) ; $i++){
+                            $product_id = $this->productRepository->addProduct($producttitles[$i]);
+                            if($product_id){
+                                $this->factorRepository->addFactorItem($factor_id , $product_id , $productstepids[$i] ,
+                                $productdates[$i] , $productdescriptions[$i]);
+                                return redirect()->back()->with(['success' , 'با موفقیت ثبت شد']);
+                            }else{
+                                return redirect()->back()->withErrors('خطایی رخ داده است');
+                            }
+                        }
+                    }else{
+                        return redirect()->back()->withErrors('در ثبت فاکتور خطایی رخ داده است');
+                    }
+                }else{
+                    return redirect()->back()->withErrors('در ثبت کاربر خطایی رخ داده است');
+                }
+
             }
         }
     }
