@@ -19,7 +19,7 @@ class FactorRepository implements FactorRepositoryInterface{
         // TODO: Implement addFactor() method.
         $factor = new Factor();
         $factor->factor_number = $factor_number;
-        $factor->register_date = Jalalian::forge('now');
+        $factor->register_date = Jalalian::forge('now')->getTimestamp();
         $factor->exp_date = $exp_date;
         $factor->user_id = $user_id;
         if($factor->save()){

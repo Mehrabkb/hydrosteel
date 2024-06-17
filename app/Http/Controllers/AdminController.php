@@ -78,11 +78,11 @@ class AdminController extends Controller
                             if($product_id){
                                 $this->factorRepository->addFactorItem($factor_id , $product_id , $productstepids[$i] ,
                                 $productdates[$i] , $productdescriptions[$i]);
-                                return redirect()->back()->with(['success' , 'با موفقیت ثبت شد']);
                             }else{
                                 return redirect()->back()->withErrors('خطایی رخ داده است');
                             }
                         }
+                        return redirect()->back()->with(['success' , 'با موفقیت ثبت شد']);
                     }else{
                         return redirect()->back()->withErrors('در ثبت فاکتور خطایی رخ داده است');
                     }
