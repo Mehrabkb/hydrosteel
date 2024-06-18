@@ -125,7 +125,8 @@ class AdminController extends Controller
     public function product(Request $request){
         switch ($request->method()){
             case 'GET':
-                return view('admin.product');
+                $products = $this->productRepository->getProducts();
+                return view('admin.product' , compact('products'));
             break;
         }
     }
