@@ -93,6 +93,35 @@ class AdminController extends Controller
             }
         }
     }
+    public function showFactor(Request $request , $id){
+        if($request->isMethod('GET')){
+            $factor = $this->factorRepository->getFullFactorDataById($id);
+            $factorItems = $this->factorRepository->getFactorItemsByFactorId($id);
+            $user = $this->userRepository->getUserByUserId($factor->user_id);
+            $steps = $this->stepRepository->getAll();
+            return view('admin.editFactor' , compact('factor' , 'factorItems' , 'user' , 'steps'));
+        }
+    }
+    public function editFactorItem(Request $request){
+        if($request->isMethod('POST')){
+            $validated = $request->validate([
+                'factor_item_id' => 'required',
+                'step_id' => 'required',
+                'date' => 'required',
+                'description' => 'required'
+            ]);
+            if($validated){
+                $factor_item_id = htmlspecialchars($request->input('factor_item_id'));
+                $step_id = htmlspecialchars($request->input('step_id'));
+                $date = htmlspecialchars($request->input('date'));
+                $description = htmlspecialchars($request->input('description'));
+                if($this->factorRepository->updateFactor($factor_item_id , $step_id , $date , $description)){
+                    return true;
+                }
+                return false;
+            }
+        }
+    }
     public function product(Request $request){
         switch ($request->method()){
             case 'GET':

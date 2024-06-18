@@ -41,4 +41,32 @@ class FactorRepository implements FactorRepositoryInterface{
         }
         return false;
     }
+    public function getFactorById($factor_id)
+    {
+        // TODO: Implement getFactorById() method.
+        return Factor::where('factor_id' , $factor_id)->first();
+    }
+    public function getFullFactorDataById($factor_id)
+    {
+        // TODO: Implement getFullFactorDataById() method.
+        $factor = Factor::where('factor_id' , $factor_id)->first();
+        return $factor;
+    }
+    public function getFactorItemsByFactorId($factor_id)
+    {
+        // TODO: Implement getFactorItemsByFactorId() method.
+        return FactorItem::where('factor_id' , $factor_id)->join('products', 'factor_items.product_id', '=', 'products.product_id')->get();
+    }
+    public function updateFactor($factor_item_id, $step_id, $date, $description)
+    {
+        // TODO: Implement updateFactor() method.
+        $factorItem = FactorItem::where('factor_item_id' , $factor_item_id)->first();
+        $factorItem->step_id = $step_id;
+        $factorItem->date = $date;
+        $factorItem->description = $description;
+        if($factorItem->save()){
+            return true;
+        }
+        return false;
+    }
 }

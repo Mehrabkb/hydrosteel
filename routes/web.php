@@ -21,6 +21,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/home', [\App\Http\Controllers\AdminController::class , 'home'])->name('admin.home');
     Route::get('/factor' , [\App\Http\Controllers\AdminController::class , 'factor'])->name('admin.factor');
     Route::POST('/factor/add' , [\App\Http\Controllers\AdminController::class , 'addFactor'])->name('admin.add.factor');
+    Route::get('/factor/show/{id}' , [\App\Http\Controllers\AdminController::class , 'showFactor'])->name('admin.show.factor');
+    Route::post('/factor/edit/factorItem' , [\App\Http\Controllers\AdminController::class , 'editFactorItem'])->name('admin.edit.factorItem');
     Route::get('/product' ,[\App\Http\Controllers\AdminController::class , 'product'])->name('admin.product');
     Route::get('/step' , [\App\Http\Controllers\AdminController::class , 'step'])->name('admin.step');
     Route::post('/step/add' , [\App\Http\Controllers\AdminController::class , 'addStep'])->name('admin.add.step');

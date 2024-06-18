@@ -30,7 +30,7 @@
                                 <td>{{ $factor->full_name}}</td>
                                 <td>{{ $factor->factor_number }}</td>
                                 <td>
-                                    <a class="btn btn-primary text-white">مشاهده</a>
+                                    <a class="btn btn-primary text-white" href="{{ route('admin.show.factor' , ['id' => $factor->factor_id]) }}">مشاهده</a>
                                 </td>
                             </tr>
                         @endforeach

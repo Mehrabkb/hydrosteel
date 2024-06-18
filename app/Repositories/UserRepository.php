@@ -31,4 +31,9 @@ class UserRepository implements UserRepositoryInterface{
         }
         return false;
     }
+    public function getUserByUserId($user_id)
+    {
+        // TODO: Implement getUserByUserId() method.
+        return User::where('user_id', $user_id)->first();
+    }
 }
