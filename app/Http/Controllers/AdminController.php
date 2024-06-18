@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\FactorRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\SmsRepository;
 use App\Repositories\StepRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -12,11 +13,12 @@ class AdminController extends Controller
 {
     public function __construct(StepRepository $stepRepository
         , FactorRepository $factorRepository , UserRepository $userRepository
-        , ProductRepository $productRepository){
+        , ProductRepository $productRepository , SmsRepository $smsRepository){
         $this->stepRepository = $stepRepository;
         $this->factorRepository = $factorRepository;
         $this->userRepository = $userRepository;
         $this->productRepository = $productRepository;
+        $this->smsRepository = $smsRepository;
     }
     public function home(Request $request){
         return view('admin.home');
@@ -116,6 +118,7 @@ class AdminController extends Controller
                 $date = htmlspecialchars($request->input('date'));
                 $description = htmlspecialchars($request->input('description'));
                 if($this->factorRepository->updateFactor($factor_item_id , $step_id , $date , $description)){
+                    $this->smsRepository->sendSms("09369849997" , "hello");
                     return true;
                 }
                 return false;
