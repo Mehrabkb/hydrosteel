@@ -10,8 +10,8 @@ class SmsRepository implements SmsRepositoryInterface{
     {
         // TODO: Implement sendSms() method.
         try{
-            $sender = "10004346";
-            $receptor = "09369849997";
+            $sender = "1000888008088";
+            $receptor = $number;
             $result = Kavenegar::Send($sender,$receptor,$message);
             if($result){
                 foreach($result as $r){

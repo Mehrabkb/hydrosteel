@@ -25,4 +25,9 @@ class ProductRepository implements ProductRepositoryInterface{
         // TODO: Implement getProducts() method.
         return Product::all();
     }
+    public function getProductByProductId($productId)
+    {
+        // TODO: Implement getProductByProductId() method.
+        return Product::where('product_id', $productId)->first();
+    }
 }

@@ -117,8 +117,13 @@ class AdminController extends Controller
                 $step_id = htmlspecialchars($request->input('step_id'));
                 $date = htmlspecialchars($request->input('date'));
                 $description = htmlspecialchars($request->input('description'));
+                $factorItem = $this->factorRepository->getFactorItemByFactorItemId($factor_item_id);
+                $factor = $this->factorRepository->getFactorById($factorItem->factor_id);
+                $product = $this->productRepository->getProductByProductId($factorItem->product_id);
+                $user = $this->userRepository->getUserByUserId($factor->user_id);
                 if($this->factorRepository->updateFactor($factor_item_id , $step_id , $date , $description)){
-                    $this->smsRepository->sendSms("09369849997" , "hello");
+                    return $this->smsRepository->sendSms($user->mobile , "کاربر گرامی فاکتور شما به شماره " . $factor->factor_number . "در محصول شما به نام "
+                    . $product->title . " ". "تغییر یافت  ");
                     return true;
                 }
                 return false;

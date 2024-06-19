@@ -69,4 +69,9 @@ class FactorRepository implements FactorRepositoryInterface{
         }
         return false;
     }
+    public function getFactorItemByFactorItemId($factor_item_id)
+    {
+        // TODO: Implement getFactorItemByFactorItemId() method.
+        return FactorItem::where('factor_item_id' , $factor_item_id)->first();
+    }
 }

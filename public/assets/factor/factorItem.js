@@ -28,6 +28,7 @@ $(function(){
             },
             success : function(result){
                 if(result){
+                    console.log(result);
                     alertify.success('با موفقیت ویرایش شد');
                 }else{
                     alertify.error('خطایی رخ داده است');
