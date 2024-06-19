@@ -55,7 +55,8 @@ class FactorRepository implements FactorRepositoryInterface{
     public function getFactorItemsByFactorId($factor_id)
     {
         // TODO: Implement getFactorItemsByFactorId() method.
-        return FactorItem::where('factor_id' , $factor_id)->join('products', 'factor_items.product_id', '=', 'products.product_id')->get();
+        return FactorItem::where('factor_id' , $factor_id)->join('products', 'factor_items.product_id', '=', 'products.product_id')
+            ->join('steps' , 'factor_items.step_id' , '=' , 'steps.step_id')->get();
     }
     public function updateFactor($factor_item_id, $step_id, $date, $description)
     {
@@ -73,5 +74,12 @@ class FactorRepository implements FactorRepositoryInterface{
     {
         // TODO: Implement getFactorItemByFactorItemId() method.
         return FactorItem::where('factor_item_id' , $factor_item_id)->first();
+    }
+    public function getFactorByFactorNumber($factor_number)
+    {
+        // TODO: Implement getFactorByMobileAndFactorNumber() method.
+        $factor = Factor::where('factor_number' , $factor_number)->first();
+
+        return $factor;
     }
 }

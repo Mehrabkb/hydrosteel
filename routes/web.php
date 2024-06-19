@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/factor/search' ,[\App\Http\Controllers\CustomerController::class , 'factorViewer'])->name('factor.search');
+Route::post('/factor/search' ,[\App\Http\Controllers\CustomerController::class , 'factorViewer'])->name('factor.search');
 
 Route::prefix('admin')->group(function () {
     Route::get('/home', [\App\Http\Controllers\AdminController::class , 'home'])->name('admin.home');

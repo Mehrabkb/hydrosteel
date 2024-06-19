@@ -1,0 +1,19 @@
+body{
+    direction: rtl;
+}
+.form-title-container , .response-column{
+    background : #5bbef7;
+    color : #fff;
+}
+.item{
+    border : 1px solid #000!important;
+}
+.item hr{
+    margin : .3rem 0;
+}
+hr{
+    margin : .3rem 0;
+}
+.factor-item-row{
+    border : 1px solid #000!important;
+}
