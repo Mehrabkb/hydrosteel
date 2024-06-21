@@ -8,12 +8,14 @@ use App\Repositories\SmsRepository;
 use App\Repositories\StepRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     public function __construct(StepRepository $stepRepository
         , FactorRepository $factorRepository , UserRepository $userRepository
         , ProductRepository $productRepository , SmsRepository $smsRepository){
+        $this->middleware('userLoginMiddleware');
         $this->stepRepository = $stepRepository;
         $this->factorRepository = $factorRepository;
         $this->userRepository = $userRepository;
@@ -21,7 +23,10 @@ class AdminController extends Controller
         $this->smsRepository = $smsRepository;
     }
     public function home(Request $request){
-        return view('admin.home');
+        $factors = $this->factorRepository->getFactorCountAll();
+        $products = $this->productRepository->getProductCountAll();
+        $steps = $this->stepRepository->getCountStepsAll();
+        return view('admin.home' , compact('factors' , 'products' , 'steps'));
     }
     public function factor(Request $request){
         switch ($request->method()){
@@ -221,6 +226,12 @@ class AdminController extends Controller
                 }
                 return redirect()->back()->withErrors('مشکلی رخ داده است');
             }
+        }
+    }
+    public function adminLogout(Request $request){
+        if($request->isMethod('GET')){
+            Auth::logout();
+            return redirect()->route('user.login');
         }
     }
 }

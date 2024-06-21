@@ -243,6 +243,14 @@
                       </p>
                   </a>
               </li>
+              <li class="nav-item">
+                  <a href="{{ route('admin.logout') }}" class="nav-link">
+                      <i class="nav-icon fa fa-th"></i>
+                      <p>
+                          خروج
+                      </p>
+                  </a>
+              </li>
 {{--            <li class="nav-item has-treeview">--}}
 {{--              <a href="#" class="nav-link">--}}
 {{--                <i class="nav-icon fa fa-pie-chart"></i>--}}

@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\UserRepositoryInterface;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserRepositoryInterface{
     public function addUser($fullName, $mobile)
@@ -35,5 +36,21 @@ class UserRepository implements UserRepositoryInterface{
     {
         // TODO: Implement getUserByUserId() method.
         return User::where('user_id', $user_id)->first();
+    }
+    public function getUserByUserName($username)
+    {
+        // TODO: Implement getUserByUserName() method.
+        return User::where('full_name', $username)->first();
+    }
+    public function checkUserPassword($username, $password)
+    {
+        // TODO: Implement checkUserPassword() method.
+        $user = $this->getUserByUserName($username);
+        if($user){
+            if(Hash::check($password, $user->password)){
+                return $user->user_id;
+            }
+        }
+        return false;
     }
 }

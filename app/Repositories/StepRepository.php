@@ -47,4 +47,9 @@ class StepRepository implements StepRepositoryInterface{
         }
         return false;
     }
+    public function getCountStepsAll()
+    {
+        // TODO: Implement getCountStepsAll() method.
+        return count(Step::all());
+    }
 }

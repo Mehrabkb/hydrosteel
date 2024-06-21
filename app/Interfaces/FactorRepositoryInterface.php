@@ -12,4 +12,5 @@ interface FactorRepositoryInterface{
     public function updateFactor($factor_item_id , $step_id , $date , $description);
     public function getFactorItemByFactorItemId($factor_item_id);
     public function getFactorByFactorNumber($factor_number );
+    public function getFactorCountAll();
 }

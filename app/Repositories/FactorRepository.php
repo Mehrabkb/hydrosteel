@@ -82,4 +82,9 @@ class FactorRepository implements FactorRepositoryInterface{
 
         return $factor;
     }
+    public function getFactorCountAll()
+    {
+        // TODO: Implement getFactorCountAll() method.
+        return count(Factor::all());
+    }
 }

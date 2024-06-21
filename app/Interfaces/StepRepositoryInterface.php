@@ -9,4 +9,5 @@ interface StepRepositoryInterface{
     public function removeStep($step_id);
     public function getStep($step_id);
     public function updateStep($step_id , $step_name , $step_number);
+    public function getCountStepsAll();
 }

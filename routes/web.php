@@ -12,9 +12,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/' , [\App\Http\Controllers\CustomerController::class , 'factorViewer']);
 Route::get('/factor/search' ,[\App\Http\Controllers\CustomerController::class , 'factorViewer'])->name('factor.search');
 Route::post('/factor/search' ,[\App\Http\Controllers\CustomerController::class , 'factorViewer'])->name('factor.search');
+Route::get('/user/login' , [\App\Http\Controllers\UserController::class , 'userLogin'])->name('user.login');
+Route::post('/user/login' , [\App\Http\Controllers\UserController::class , 'userLogin'])->name('user.login');
 
 Route::prefix('admin')->group(function () {
     Route::get('/home', [\App\Http\Controllers\AdminController::class , 'home'])->name('admin.home');
@@ -28,4 +30,5 @@ Route::prefix('admin')->group(function () {
     Route::post('/step/remove' , [\App\Http\Controllers\AdminController::class , 'removeStep'])->name('admin.remove.step');
     Route::post('/step/single' , [\App\Http\Controllers\AdminController::class , 'singleStep'])->name('admin.single.step');
     Route::post('/step/edit' , [\App\Http\Controllers\AdminController::class , 'editStep'])->name('admin.edit.step');
+    Route::get('/user/logout' , [\App\Http\Controllers\AdminController::class , 'adminLogout'])->name('admin.logout');
 });
