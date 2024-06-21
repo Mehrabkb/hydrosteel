@@ -20,9 +20,11 @@ class CustomerController extends Controller
             $validate = $request->validate([
                 'mobile' => 'required',
                 'factor-number' => 'required',
+                'g-recaptcha-response' => 'required|captcha'
             ],[
                 'mobile.required' => 'شماره موبایل را وارد کنید',
-                'factor-number.required' => 'شماره فاکتور را وارد کنید'
+                'factor-number.required' => 'شماره فاکتور را وارد کنید',
+                'g-recaptcha-response.required' => 'اعتبارسنجی الزامی می باشد'
             ]);
             if($validate){
                 $mobile = htmlspecialchars($request->input('mobile'));

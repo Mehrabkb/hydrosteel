@@ -27,6 +27,11 @@
                         <label for="exampleInputEmail1">شماره پیش فاکتور</label>
                         <input type="text" class="form-control text-center mt-3" id="exampleInputEmail1" name="factor-number" aria-describedby="emailHelp" placeholder="شماره پیش فاکتور">
                     </div>
+                    <div class="form-group py-3">
+                        {!! NoCaptcha::renderJs() !!}
+                        {!! NoCaptcha::display() !!}
+                    </div>
+
                     <button type="submit" class="btn btn-primary px-5 mb-3 py-3 bg-dark">پیگیری سفارش</button>
                     <br >
                     <small class="my-3">در صورت بروز هرگونه مشکل لطفا با شماره 09031306888 و 02133409439 تماس حاصل کنید</small>
