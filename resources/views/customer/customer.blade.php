@@ -20,8 +20,8 @@
                 <form class="text-center mx-auto pb-3" method="POST" action="{{ route('factor.search') }}">
                     @csrf
                     <div class="form-group my-3">
-                        <label for="exampleInputEmail1">شماره موبایل</label>
-                        <input type="text" class="form-control text-center mt-3" id="exampleInputEmail1" name="mobile" aria-describedby="emailHelp" placeholder="شماره موبایل">
+                        <label for="exampleInputEmail1">شماره موبایل پیش فاکتور</label>
+                        <input type="text" class="form-control text-center mt-3" id="exampleInputEmail1" name="mobile" aria-describedby="emailHelp" placeholder="شماره موبایل پیش فاکتور">
                     </div>
                     <div class="form-group my-3">
                         <label for="exampleInputEmail1">شماره پیش فاکتور</label>
