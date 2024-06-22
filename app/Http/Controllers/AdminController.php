@@ -121,9 +121,25 @@ class AdminController extends Controller
                 $factor = $this->factorRepository->getFactorById($factor_id);
                 if($factor){
                     if($this->factorRepository->deleteFactorByFactorId($factor->factor_id)){
-                        $this->factorRepository->deleteFactorItemByFactorId($factor_id);
+                        $this->factorRepository->deleteFactorItemsByFactorId($factor_id);
                         return true;
                     }
+                }
+                return false;
+            }
+        }
+    }
+    public function deleteFactorItem(Request $request){
+        if($request->isMethod('POST')){
+            $validate = $request->validate([
+                'factor_item_id' => 'required'
+            ],[
+                'factor_item_id.required' => 'شماره آیتم فاکتور الزامی است '
+            ]);
+            if($validate){
+                $factor_item_id = htmlspecialchars($request->input('factor_item_id'));
+                if($this->factorRepository->deleteFactorItemByFactorItemId($factor_item_id)){
+                    return true;
                 }
                 return false;
             }

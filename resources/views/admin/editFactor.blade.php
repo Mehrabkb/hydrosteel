@@ -58,6 +58,7 @@
                             </textarea>
                         </div>
                         <div class="col-12 col-md-12 text-center mt-3" >
+                            <button class="btn btn-danger btn-delete-factor-item" type="button" data-url="{{ route('admin.delete.factorItem') }}" data-id="{{ $factorItem->factor_item_id }}" >حذف مورد</button>
                             <button class="btn btn-primary btn-edit-factor-item" type="button"  data-url="{{ route('admin.edit.factorItem') }}" data-id="{{ $factorItem->factor_item_id }}">ویرایش</button>
                         </div>
                     </div>

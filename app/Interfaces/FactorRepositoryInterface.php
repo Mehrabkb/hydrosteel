@@ -14,5 +14,6 @@ interface FactorRepositoryInterface{
     public function getFactorByFactorNumber($factor_number );
     public function getFactorCountAll();
     public function deleteFactorByFactorId($factor_id);
-    public function deleteFactorItemByFactorId($factor_id);
+    public function deleteFactorItemsByFactorId($factor_id);
+    public function deleteFactorItemByFactorItemId($factor_item_id);
 }
