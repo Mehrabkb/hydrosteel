@@ -31,6 +31,7 @@
                                 <td>{{ $factor->factor_number }}</td>
                                 <td>
                                     <a class="btn btn-primary text-white" href="{{ route('admin.show.factor' , ['id' => $factor->factor_id]) }}">مشاهده</a>
+                                    <button class="btn btn-danger btn-delete-factor" data-id="{{ $factor->factor_id }}" data-url="{{ route('admin.remove.factor') }}">حذف</button>
                                 </td>
                             </tr>
                         @endforeach

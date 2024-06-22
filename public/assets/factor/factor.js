@@ -54,4 +54,39 @@ $(function(){
         let that = $(this);
         that.parent().parent().parent().remove();
     })
+    $('.btn-delete-factor').click(function(){
+        let that = $(this);
+        Swal.fire({
+            icon: "error",
+            title: "آیا مایل به حذف این مورد هستید؟",
+            showCancelButton: true,
+            confirmButtonColor: "red",
+            cancelButtonText : 'انصراف',
+            confirmButtonText: "بله"
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                let factor_id = that.attr('data-id');
+                let url = that.attr('data-url');
+                $.ajax({
+                    method : 'POST',
+                    url : url,
+                    data : {
+                        'factor_id' : factor_id
+                    },
+                    success : function(result){
+                        if(result){
+                            location.reload();
+                        }else{
+                            Swal.fire({
+                                icon : "error",
+                                title : "مشکلی در حذف مورد رخ داد",
+                                confirmButtonText : 'ادامه'
+                            });
+                        }
+                    }
+                })
+            }
+        });
+    })
 })

@@ -109,6 +109,26 @@ class AdminController extends Controller
             return view('admin.editFactor' , compact('factor' , 'factorItems' , 'user' , 'steps'));
         }
     }
+    public function deleteFactor(Request $request){
+        if($request->isMethod('POST')){
+            $validate = $request->validate([
+                'factor_id' => 'required'
+            ],[
+                'factor_id.required' => 'شماره فاکتور الزامی است'
+            ]);
+            if($validate){
+                $factor_id = htmlspecialchars($request->input('factor_id'));
+                $factor = $this->factorRepository->getFactorById($factor_id);
+                if($factor){
+                    if($this->factorRepository->deleteFactorByFactorId($factor->factor_id)){
+                        $this->factorRepository->deleteFactorItemByFactorId($factor_id);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+    }
     public function editFactorItem(Request $request){
         if($request->isMethod('POST')){
             $validated = $request->validate([

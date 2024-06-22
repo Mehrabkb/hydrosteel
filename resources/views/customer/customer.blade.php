@@ -34,7 +34,7 @@
 
                     <button type="submit" class="btn btn-primary px-5 mb-3 py-3 bg-dark">پیگیری سفارش</button>
                     <br >
-                    <small class="my-3">در صورت بروز هرگونه مشکل لطفا با شماره 09031306888 و 02133409439 تماس حاصل کنید</small>
+                    <small class="my-3">در صورت بروز هرگونه مشکل لطفا با شماره <a href="tel:+989031306888">09031306888</a> و <a href="tel:+982133409439">02133409439</a> تماس حاصل کنید</small>
                 </form>
             </div>
             <hr>

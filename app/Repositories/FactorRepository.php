@@ -87,4 +87,14 @@ class FactorRepository implements FactorRepositoryInterface{
         // TODO: Implement getFactorCountAll() method.
         return count(Factor::all());
     }
+    public function deleteFactorByFactorId($factor_id)
+    {
+        // TODO: Implement deleteFactorByFactorId() method.
+        return Factor::destroy($factor_id);
+    }
+    public function deleteFactorItemByFactorId($factor_id)
+    {
+        // TODO: Implement deleteFactorItemByFactorId() method.
+        return FactorItem::where('factor_id' , $factor_id)->delete();
+    }
 }

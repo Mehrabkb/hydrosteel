@@ -20,3 +20,7 @@ hr{
 .g-recaptcha > div{
     margin : 0 auto;
 }
+a{
+    text-decoration: none;
+    color : #5bbef7;
+}
