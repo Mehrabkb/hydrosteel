@@ -25,6 +25,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/factor/show/{id}' , [\App\Http\Controllers\AdminController::class , 'showFactor'])->name('admin.show.factor');
     Route::post('/factor/edit/factorItem' , [\App\Http\Controllers\AdminController::class , 'editFactorItem'])->name('admin.edit.factorItem');
     Route::post('/factor/delete/factorItem' , [\App\Http\Controllers\AdminController::class , 'deleteFactorItem'])->name('admin.delete.factorItem');
+    Route::post('/factor/add/single/factorItem' , [\App\Http\Controllers\AdminController::class , 'addSingleFactorItem'])->name('admin.add.single.factorItem');
     Route::post('/factor/remove' , [\App\Http\Controllers\AdminController::class , 'deleteFactor'])->name('admin.remove.factor');
     Route::get('/product' ,[\App\Http\Controllers\AdminController::class , 'product'])->name('admin.product');
     Route::get('/step' , [\App\Http\Controllers\AdminController::class , 'step'])->name('admin.step');

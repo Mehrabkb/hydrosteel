@@ -64,12 +64,17 @@
                     </div>
                     @endforeach
                 </div>
-{{--                <button type="button" class="btn btn-success btn-add-item">افزودن آیتم جدید</button>--}}
+                <button type="button" class="btn btn-success btn-add-item">افزودن آیتم جدید</button>
 {{--                <button type="submit" class="btn btn-primary">ثبت</button>--}}
             </form>
         </div>
     </div>
 @endsection
 @section('js')
+    <script>
+        let steps = @json($steps);
+        let add_single_factor_item = '{{ route('admin.add.single.factorItem') }}';
+        let factor_id = '{{ $factor->factor_id }}';
+    </script>
     <script src="{{ asset('assets/factor/factorItem.js') }}"></script>
 @endsection

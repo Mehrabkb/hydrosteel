@@ -106,6 +106,7 @@ class AdminController extends Controller
             $factorItems = $this->factorRepository->getFactorItemsByFactorId($id);
             $user = $this->userRepository->getUserByUserId($factor->user_id);
             $steps = $this->stepRepository->getAll();
+
             return view('admin.editFactor' , compact('factor' , 'factorItems' , 'user' , 'steps'));
         }
     }
@@ -170,6 +171,32 @@ class AdminController extends Controller
                     return true;
                 }
                 return false;
+            }
+        }
+    }
+    public function addSingleFactorItem(Request $request){
+        if($request->isMethod('POST')){
+            $validate = $request->validate([
+                'factor_id' => 'required',
+                'step_id' => 'required',
+                'product_title' => 'required',
+                'product_date' =>  'required',
+                'product_description' => 'required'
+            ],[
+                'factor_id.required' => 'الزامی است',
+                'step_id.required' => 'الزامی است',
+                'product_title.required' => 'الزامی است',
+                'product_date.required' => 'الزامی است',
+                'product_description.required' => 'الزامی است'
+            ]);
+            if($validate){
+                $factor_id = htmlspecialchars($request->input('factor_id'));
+                $step_id = htmlspecialchars($request->input('step_id'));
+                $product_title = htmlspecialchars($request->input('product_title'));
+                $product_date = htmlspecialchars($request->input('product_date'));
+                $product_description = htmlspecialchars($request->input('product_description'));
+                $product_id = $this->productRepository->addProduct($product_title);
+                return $this->factorRepository->addFactorItem($factor_id ,$product_id,  $step_id  , $product_date , $product_description);
             }
         }
     }
