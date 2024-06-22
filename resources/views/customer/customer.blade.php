@@ -74,7 +74,7 @@
                     </div>
                     <div class="col-12 mt-5">
                         @foreach($factorItems as $factorItem)
-                            <div class="row py-3 border factor-item-row text-center">
+                            <div class="row py-3 my-3 border factor-item-row text-center">
                                 <div class="col-12 col-md-4">
                                     <label>نام محصول</label>
                                     <hr>
