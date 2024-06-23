@@ -28,7 +28,7 @@
                         <input type="text" class="form-control text-center mt-3" id="exampleInputEmail1" name="factor-number" aria-describedby="emailHelp" placeholder="شماره پیش فاکتور">
                     </div>
                     <div class="form-group py-3">
-                        {!! NoCaptcha::renderJs() !!}
+                        {!! NoCaptcha::renderJs('fa') !!}
                         {!! NoCaptcha::display() !!}
                     </div>
 
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="col-12 item py-3 col-md-3 border text-center">
-                        <label>شماره فاکتور</label>
+                        <label>شماره پیش فاکتور</label>
                         <br>
                         <hr>
                         <span>{{ $factor->factor_number }}</span>
@@ -86,7 +86,7 @@
                                     <p>{{ $factorItem->step_name }}</p>
                                 </div>
                                 <div class="col-12 col-md-4">
-                                    <label>تاریخ تحویلی</label>
+                                    <label>تاریخ تحویل</label>
                                     <hr>
                                     <p>{{ $factorItem->date }}</p>
                                 </div>
