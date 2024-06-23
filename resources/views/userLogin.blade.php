@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="form-group py-3">
-                    {!! NoCaptcha::renderJs() !!}
+                    {!! NoCaptcha::renderJs('fa') !!}
                     {!! NoCaptcha::display() !!}
                 </div>
                 <div class="row">
